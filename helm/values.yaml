@@ -1,0 +1,26 @@
+replicaCount: 2
+
+image:
+  repository: gitea.copeworks.local/copeworks/infrastructure/nodejs
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 3000
+
+ingress:
+  enabled: true
+  className: nginx
+  host: dockin.copeworks.local
+  tls:
+    enabled: false
+    # secretName: myapp-tls
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi

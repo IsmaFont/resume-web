@@ -1,0 +1,23 @@
+{
+  "name": "metro-landing-page",
+  "version": "1.0.0",
+  "description": "Metro-styled personal landing page",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "landing-page",
+    "metro",
+    "personal-website"
+  ],
+  "author": "Ismael Font",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "package.json": "^2.0.1",
+    "pkg.json": "^2.0.8",
+    "server.js": "^1.0.0"
+  }
+}
