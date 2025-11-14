@@ -243,7 +243,68 @@ footer {
     font-weight: 300;
 }
 
-@media (max-width: 768px) {
+.qr-frame {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+    background: white;
+    padding: 10px;
+    /*box-shadow: 0 4px 14px #000000;*/
+    border: 2px solid #000000;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Frame lift and grow on hover */
+.qr-frame:hover {
+/*    border-color: gold;
+    box-shadow: 0 6px 18px #ffffff;*/
+    box-shadow: 0 4px 14px #000000;
+    transform: translateY(-5px);
+    padding-bottom: 35px; /* create space for label on hover */
+}
+
+.qr-frame img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+
+
+/* Fade and slide up when hovering */
+.qr-frame:hover .qr-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Label starts hidden below the frame */
+.qr-label {
+    position: absolute;
+    bottom: 5px;
+    text-align: center;
+    font-style: italic;
+    font-variant: small-caps;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+
+
+@media (max-width: 1425px) {
     body {
         padding-bottom: 80px;
     }
@@ -275,5 +336,13 @@ footer {
 
     .social-links {
         grid-template-columns: 1fr;
+    }
+
+    .qr-frame {
+        display: none;
+    }
+
+    footer {
+        position: relative;
     }
 }

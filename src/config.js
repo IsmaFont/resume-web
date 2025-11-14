@@ -10,5 +10,6 @@ module.exports = {
     github: 'https://github.com/IsmaFont',
     email: 'mailto:ismael_font@hotmail.com',
     whatsapp: 'https://wa.me/3515293907?text=Hola%20Ismael%21'
-  }
+  },
+  vcardQrUrl: '/files/vcard-qr.png' // Path to your vCard QR code image
 };

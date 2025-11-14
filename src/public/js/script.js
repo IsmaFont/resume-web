@@ -62,7 +62,15 @@ function updateContent(config) {
     socialLinks.forEach((link, index) => {
         if (linkKeys[index] && config.socialLinks[linkKeys[index]]) {
             link.href = config.socialLinks[linkKeys[index]];
+    }
+
+    // Update QR code
+    if (config.vcardQrUrl) {
+        const qrImg = document.querySelector('.qr-frame img');
+        if (qrImg) {
+            qrImg.src = config.vcardQrUrl;
         }
+    }
     });
 }
 
