@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: gitea.copeworks.local/copeworks/infrastructure/nodejs
+  repository: gitea.copeworks.local/user/repo
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -12,7 +12,7 @@ service:
 ingress:
   enabled: true
   className: nginx
-  host: dockin.copeworks.local
+  host: example.copeworks.local
   tls:
     enabled: false
     # secretName: myapp-tls

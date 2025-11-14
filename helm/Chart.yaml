@@ -1,5 +1,5 @@
 apiVersion: v2
-name: myapp
-description: My Node.js application
+name: resume-web-chart
+description: Resume NodeJS Webpage
 version: 0.1.0
 appVersion: "1.0"
