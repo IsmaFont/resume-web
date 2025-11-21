@@ -1,3 +1,3 @@
-# resume-web
+# Resume Web
 
-Resume webpage
+Static webpage showing profile card and resume download link.
