@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - staging
     paths:
       - 'src/**'
       - 'Dockerfile'
@@ -65,7 +66,7 @@ jobs:
         run: |
           helm registry login gitea.copeworks.com.ar \
             -u ${{ gitea.actor }} \
-            --password-stdin ${{ secrets.DOCKER_TOKEN }}
+            -p ${{ secrets.DOCKER_TOKEN }}
 
       - name: Push Helm chart to OCI registry
         run: |
