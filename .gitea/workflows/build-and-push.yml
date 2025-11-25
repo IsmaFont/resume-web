@@ -48,7 +48,7 @@ jobs:
           context: .
           push: true
           tags: |
-            gitea.copeworks.com.ar/isma_font/resume-web:latest
+            gitea.copeworks.com.ar/isma_font/resume-web:img-latest
             gitea.copeworks.com.ar/isma_font/resume-web:img-${{ steps.version.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
