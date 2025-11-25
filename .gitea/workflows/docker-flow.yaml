@@ -47,15 +47,15 @@ jobs:
           registry: gitea.copeworks.com.ar
           username: ${{ gitea.actor }}
           password: ${{ secrets.DOCKER_TOKEN }}
-          
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: |
-            gitea.copeworks.com.ar/isma_font/resume-web:$img-{{ steps.tags.outputs.tag_suffix }}-latest
-            gitea.copeworks.com.ar/isma_font/resume-web:$img-{{ steps.tags.outputs.tag_suffix }}-${{ steps.version.outputs.tag }}
+            gitea.copeworks.com.ar/isma_font/resume-web:img-${{ steps.tags.outputs.tag_suffix }}-latest
+            gitea.copeworks.com.ar/isma_font/resume-web:img-${{ steps.tags.outputs.tag_suffix }}-${{ steps.version.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 

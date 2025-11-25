@@ -45,7 +45,9 @@ jobs:
 
       - name: Package Helm chart
         run: |
-          helm package helm/resume-web/ --version ${{ steps.version.outputs.tag }} --destination ./helm-packages
+          helm package helm/resume-web/ \
+          --version ${{ steps.version.outputs.tag }}-${{ steps.tags.outputs.tag_suffix }} \
+          --destination ./helm-packages
 
       - name: Log in to Helm repository
         run: |
@@ -55,7 +57,7 @@ jobs:
 
       - name: Push Helm chart to OCI registry
         run: |
-          helm push ./helm-packages/resume-web-{{ steps.tags.outputs.tag_suffix }}-${{ steps.version.outputs.tag }}.tgz \
+          helm push ./helm-packages/resume-web-${{ steps.version.outputs.tag }}-${{ steps.tags.outputs.tag_suffix }}.tgz \
             oci://gitea.copeworks.com.ar/isma_font
 
       - name: Create Git tag
