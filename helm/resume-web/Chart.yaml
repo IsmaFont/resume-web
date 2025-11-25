@@ -2,8 +2,8 @@ apiVersion: v2
 name: resume-web-chart
 description: A Helm chart for deploying the resume-web application
 type: application
-version: 1.0.0
-appVersion: "1.0.0"
+version: 0.1.0
+appVersion: "0.1.0"
 home: https://github.com/ismaelfont/resume-web
 sources:
   - https://github.com/ismaelfont/resume-web
