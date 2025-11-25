@@ -30,7 +30,7 @@ jobs:
           fi
 
           # Get latest tag
-          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "1.0.0")
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.1.0")
 
           # Declare version
           echo "version=${LATEST_TAG}-${BRANCH_NAME}" >> $GITHUB_OUTPUT
