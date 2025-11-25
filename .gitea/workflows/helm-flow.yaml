@@ -1,0 +1,67 @@
+name: Build and Push Helm Chart
+on:
+  push:
+    branches:
+      - main
+      - staging
+    tags:
+      - 1.*
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get branch for versioning
+        id: tags
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
+            echo "tag_suffix=staging" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
+            echo "tag_suffix=dev" >> $GITHUB_OUTPUT
+          else
+            echo "tag_suffix=img" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get git tags for versioning
+        id: version
+        run: |
+          # Get the latest tag or use 1.0.0
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "1.0.0")
+          echo "tag=${LATEST_TAG}" >> $GITHUB_OUTPUT
+          echo "Version: ${LATEST_TAG}"
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: 'latest'
+
+      - name: Package Helm chart
+        run: |
+          helm package helm/resume-web/ --version ${{ steps.version.outputs.tag }} --destination ./helm-packages
+
+      - name: Log in to Helm repository
+        run: |
+          helm registry login gitea.copeworks.com.ar \
+            -u ${{ gitea.actor }} \
+            -p ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Push Helm chart to OCI registry
+        run: |
+          helm push ./helm-packages/resume-web-{{ steps.tags.outputs.tag_suffix }}-${{ steps.version.outputs.tag }}.tgz \
+            oci://gitea.copeworks.com.ar/isma_font
+
+      - name: Create Git tag
+        if: success()
+        run: |
+          git config user.email "ci_operator@gitea.copeworks.com.ar"
+          git config user.name "CI Operator"
+          git tag -a ${{ steps.version.outputs.tag }} -m "Release ${{ steps.version.outputs.tag }}" || true
+          git push origin ${{ steps.version.outputs.tag }} || true
