@@ -49,7 +49,7 @@ jobs:
           push: true
           tags: |
             gitea.copeworks.com.ar/isma_font/resume-web:latest
-            gitea.copeworks.com.ar/isma_font/resume-web:${{ steps.version.outputs.tag }}
+            gitea.copeworks.com.ar/isma_font/resume-web:img-${{ steps.version.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -60,7 +60,7 @@ jobs:
 
       - name: Package Helm chart
         run: |
-          helm package helm/resume-web/ --version helm-${{ steps.version.outputs.tag }} --destination ./helm-packages
+          helm package helm/resume-web/ --version ${{ steps.version.outputs.tag }} --destination ./helm-packages
 
       - name: Log in to Helm repository
         run: |
