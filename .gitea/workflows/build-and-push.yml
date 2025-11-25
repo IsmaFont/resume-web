@@ -60,7 +60,7 @@ jobs:
 
       - name: Package Helm chart
         run: |
-          helm package helm/resume-web/ --version ${{ steps.version.outputs.tag }} --destination ./helm-packages
+          helm package helm/resume-web/ --version helm-${{ steps.version.outputs.tag }} --destination ./helm-packages
 
       - name: Log in to Helm repository
         run: |
