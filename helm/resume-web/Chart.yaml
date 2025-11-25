@@ -1,5 +1,5 @@
 apiVersion: v2
-name: resume-web
+name: resume-web-chart
 description: A Helm chart for deploying the resume-web application
 type: application
 version: 1.0.0
