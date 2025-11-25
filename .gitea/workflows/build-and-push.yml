@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - staging
     paths:
       - 'src/**'
       - 'Dockerfile'
@@ -47,8 +48,8 @@ jobs:
           context: .
           push: true
           tags: |
-            gitea.copeworks.com.ar/isma_font/resume-web:latest
-            gitea.copeworks.com.ar/isma_font/resume-web:${{ steps.version.outputs.tag }}
+            gitea.copeworks.com.ar/isma_font/resume-web:img-latest
+            gitea.copeworks.com.ar/isma_font/resume-web:img-${{ steps.version.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -65,7 +66,7 @@ jobs:
         run: |
           helm registry login gitea.copeworks.com.ar \
             -u ${{ gitea.actor }} \
-            --password-stdin ${{ secrets.DOCKER_TOKEN }}
+            -p ${{ secrets.DOCKER_TOKEN }}
 
       - name: Push Helm chart to OCI registry
         run: |
