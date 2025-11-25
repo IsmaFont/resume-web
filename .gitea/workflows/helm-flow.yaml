@@ -59,7 +59,7 @@ jobs:
 
       - name: Push Helm chart to OCI registry
         run: |
-          helm push ./helm-packages/resume-web-${{ steps.version.outputs.tag }}-${{ steps.tags.outputs.tag_suffix }}.tgz \
+          helm push ./helm-packages/resume-web-${{ steps.version.outputs.version }}.tgz \
             oci://gitea.copeworks.com.ar/isma_font
 
       - name: Create Git tag
