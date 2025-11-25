@@ -25,7 +25,7 @@ jobs:
           # Get branch name
           if [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
             BRANCH_NAME=staging
-          else [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
+          elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
             BRANCH_NAME=dev
           fi
 
