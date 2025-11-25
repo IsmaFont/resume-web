@@ -1,5 +1,5 @@
 module.exports = {
-  avatarImageUrl: 'https://0.gravatar.com/avatar/73bb079e75fd5fee97782839f72bb4a09c7838167521c94c47eb48bb8cf6bcaf?size=256&d=initials', // e.g., 'https://example.com/photo.jpg' or '/images/avatar.jpg'
+  avatarImageUrl: 'https://0.gravatar.com/avatar/73bb079e75fd5fee97782839f72bb4a09c7838167521c94c47eb48bb8cf6bcaf?size=256&d=initials',
   name: 'Ismael Font',
   initials: 'IF',
   tagline: 'Systems Engineer',
