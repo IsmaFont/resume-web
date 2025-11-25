@@ -4,12 +4,12 @@ module.exports = {
   initials: 'IF',
   tagline: 'Systems Engineer',
   bio: 'Building modern experiences with clean code and thoughtful design. Passionate about technology, innovation, and creating solutions that matter.',
-  cvUrl: '/files/resume.pdf', // Path to your CV file
+  cvUrl: '/files/resume.pdf',
   socialLinks: {
     linkedin: 'https://linkedin.com/in/ismael-font',
     github: 'https://github.com/IsmaFont',
     email: 'mailto:ismael_font@hotmail.com',
     whatsapp: 'https://wa.me/3515293907?text=Hola%20Ismael%21'
   },
-  vcardQrUrl: '/files/vcard-qr.png' // Path to your vCard QR code image
+  vcardQrUrl: '/files/vcard-qr.png'
 };
