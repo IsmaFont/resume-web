@@ -28,17 +28,20 @@ jobs:
           elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
             BRANCH_NAME=dev
           fi
+          echo "Branch: ${BRANCH_NAME}"
 
           # Get latest tag
           LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.1.0")
+          echo "Tag: ${LATEST_TAG}"
 
           # Declare version
-          echo "version=${LATEST_TAG}-${BRANCH_NAME}" >> $GITHUB_OUTPUT
-
-          # Report
-          echo "Branch: ${BRANCH_NAME}"
-          echo "Tag: ${LATEST_TAG}"
-          echo "Version: ${LATEST_TAG}-${BRANCH_NAME}-"
+          if [[ -z "$BRANCH_NAME" ]]; then
+            echo "version=${LATEST_TAG}" >> $GITHUB_OUTPUT
+            echo "Version: ${LATEST_TAG}"
+          else
+            echo "version=${LATEST_TAG}-${BRANCH_NAME}" >> $GITHUB_OUTPUT
+            echo "Version: ${LATEST_TAG}-${BRANCH_NAME}"
+          fi
 
       - name: Set up Helm
         uses: azure/setup-helm@v3
