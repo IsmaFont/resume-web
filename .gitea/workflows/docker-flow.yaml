@@ -6,9 +6,8 @@ on:
       - staging
     tags:
       - 1.*
-
 jobs:
-  build-and-push:
+  docker-build-and-push:
     runs-on: ubuntu-latest
     permissions:
       contents: read
