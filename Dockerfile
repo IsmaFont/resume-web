@@ -18,8 +18,11 @@ COPY --chown=nodejs:nodejs src/ ./
 
 USER nodejs
 
+ARG VERSION=unknown
+
+ENV VERSION=$VERSION
+
 ENV PORT=3000
-ENV VERSION=0.1.2
 
 EXPOSE 3000
 

@@ -62,6 +62,8 @@ jobs:
             gitea.copeworks.com.ar/isma_font/resume-web:${{ steps.version.outputs.version }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          build-args: |
+            VERSION=${{ gitea.sha }}
 
       - name: Create Git tag
         if: success()
