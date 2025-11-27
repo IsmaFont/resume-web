@@ -4,9 +4,15 @@ const config = require('./config');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const VERSION = process.env.VERSION || 'unknown';
 
 // Serve static files from public directory
 app.use(express.static(path.join(__dirname, 'public')));
+
+// API endpoint to get version
+app.get('/version', (req, res) => {
+  res.json({ version: VERSION });
+});
 
 // API endpoint to get config data
 app.get('/api/config', (req, res) => {
@@ -21,5 +27,6 @@ app.get('/', (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Version: ${VERSION}`);
   console.log('Press Ctrl+C to stop the server');
 });
