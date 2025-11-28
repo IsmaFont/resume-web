@@ -27,6 +27,5 @@ app.get('/', (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-  console.log(`Version: ${VERSION}`);
   console.log('Press Ctrl+C to stop the server');
 });
