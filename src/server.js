@@ -1,17 +1,17 @@
 const express = require('express');
 const path = require('path');
 const config = require('./config');
+const version = require('./version')
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const VERSION = process.env.VERSION || 'unknown';
 
 // Serve static files from public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 // API endpoint to get version
 app.get('/version', (req, res) => {
-  res.json({ version: VERSION });
+  res.json(version);
 });
 
 // API endpoint to get config data
