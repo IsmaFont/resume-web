@@ -42,6 +42,11 @@ jobs:
             echo "Version: ${LATEST_TAG}-${BRANCH_NAME}"
           fi
 
+      - name: Update version info
+        run: |
+          sed -i "s/appVersion: 'unknown'/appVersion: '${{ steps.version.outputs.version }}'/g" src/version.js
+          sed -i "s/buildDate: 'unknown'/buildDate: '$(date -u +'%Y-%m-%dT%H:%M:%SZ')'/g" src/version.js
+          
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -63,7 +68,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
-            VERSION=${{ gitea.sha }}
+            VERSION=${{ steps.version.outputs.version }}
 
       - name: Create Git tag
         if: success()
