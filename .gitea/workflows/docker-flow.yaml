@@ -6,7 +6,7 @@ on:
       - staging
     tags:
       - 0.1.*
-
+      
 jobs:
   docker-build-and-push:
     runs-on: ubuntu-latest
@@ -46,7 +46,7 @@ jobs:
       - name: Update version info
         run: |
           sed -i "s/appVersion: 'unknown'/appVersion: '${{ steps.version.outputs.version }}'/g" src/version.js
-          sed -i "s/chartVersion: 'unknown'/chartVersion: '$(sed -n -e 's/^version: //p' helm/resume-web/Chart.yaml)'/g" src/version.js
+          sed -i "s/chartVersion: 'unknown'/chartVersion: '$(grep "^version:" helm/resume-web/Chart.yaml | awk '{print $2}' | sed 's/[[:space:]]*$//')'/g" src/version.js
           sed -i "s/buildDate: 'unknown'/buildDate: '$(date -u +'%Y-%m-%dT%H:%M:%SZ')'/g" src/version.js
           
       - name: Set up Docker Buildx
