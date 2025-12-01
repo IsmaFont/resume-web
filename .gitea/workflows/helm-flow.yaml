@@ -5,7 +5,7 @@ on:
       - main
       - staging
     tags:
-      - 1.*
+      - 0.1.*
 
 jobs:
   helm-pack-and-push:
@@ -42,10 +42,6 @@ jobs:
             echo "version=${LATEST_TAG}-${BRANCH_NAME}" >> $GITHUB_OUTPUT
             echo "Version: ${LATEST_TAG}-${BRANCH_NAME}"
           fi
-
-      - name: Update version info
-        run: |
-          sed -i "s/chartVersion: 'unknown'/chartVersion: '${{ steps.version.outputs.version }}'/g" src/version.js
 
       - name: Set up Helm
         uses: azure/setup-helm@v3
