@@ -1,15 +1,15 @@
 module.exports = {
-  avatarImageUrl: 'https://0.gravatar.com/avatar/73bb079e75fd5fee97782839f72bb4a09c7838167521c94c47eb48bb8cf6bcaf?size=256&d=initials',
-  name: 'Ismael Font',
   initials: 'IF',
+  name: 'Ismael Font',
   tagline: 'Systems Engineer',
   bio: 'Building modern experiences with clean code and thoughtful design. Passionate about technology, innovation, and creating solutions that matter.',
+  avatarImageUrl: '/files/photo.webp',
+  vcardQrUrl: '/files/vcard-qr.webp',
   cvUrl: '/files/resume.pdf',
   socialLinks: {
     linkedin: 'https://linkedin.com/in/ismael-font',
     github: 'https://github.com/IsmaFont',
     email: 'mailto:ismael_font@hotmail.com',
     whatsapp: 'https://wa.me/3515293907?text=Hola%20Ismael%21'
-  },
-  vcardQrUrl: '/files/vcard-qr.png'
+  }
 };
